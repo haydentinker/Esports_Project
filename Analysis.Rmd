@@ -1,0 +1,33 @@
+---
+title:"Team Analysis"
+author: Hayden Tinker
+start date: April 14,2022
+output:
+  pdf_document:
+    number_section:false
+---
+
+## Step 1 Collect Data
+  Oracles Elixir has made their match data for the 2022 season public and that is where I will be pulling my data from. Here is a link to download the data: https://oracleselixir.com/tools/downloads
+  
+## Step 2 Exploration and Preparing the Data
+```{r}
+matchData <- read.csv("2022_Match_Data_AllRegions.csv",stringsAsFactors=TRUE)
+matchData_df<-as.data.frame(matchData)
+```
+
+```{r}
+matchData_df<-matchData_df[!(matchData_df$league=="CBLOLA"),]
+matchData_df<-matchData_df[,-5]
+teamsData_df<-matchData_df[(matchData_df$position=="team"),]
+LCSData_df<-teamsData_df[matchData_df$league=="LEC",]
+teamsData_df<-teamsData_df[,-c(11,12)]
+columns<- colnames(teamsData_df)
+columns
+
+```
+
+
+```{r}
+teamsData_df$league=="LCS"
+```
